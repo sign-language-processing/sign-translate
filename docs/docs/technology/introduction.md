@@ -1,6 +1,6 @@
 # Our Approach
 
-Following the research of Dr. Amit Moryosef's published in his PhD thesis[^amit-thesis], we aim to develop a sign language translation system that separates the computer vision tasks from the language translation tasks.
+Following the research of Dr. Amit Moryosef's published in his PhD thesis[^amit-thesis], we aim to develop a sign language translation system that separates the computer vision tasks from the language translation tasks. This division ensures a more modular and robust approach to achieving high-quality translations.
 
 [^amit-thesis]: Amit Moryosef. 2024. [Real-Time Multilingual Sign Language Processing](https://arxiv.org/abs/2412.01991).
 
@@ -40,7 +40,7 @@ linkStyle 10,11,12,15 stroke:red;
 linkStyle 6,8,9,14,19,20 stroke:orange;
 ```
 
-This pipeline in fact represents two types of approaches to translation:
+This pipeline represents two types of approaches to translation:
 
 1. **Dictionary Based Translation**
 2. **SignWriting based Machine Translation**
@@ -87,15 +87,22 @@ flowchart LR
 
 #### **Main Translation Steps:**
 
-1. **text-to-SignWriting Translation**: Spoken language text is translated into SignWriting sequences using machine translation (it sees a lot of data, and extrapolates from it).
+1. **text-to-SignWriting Translation**: Spoken language text is translated into SignWriting sequences using machine translation (it sees a lot of data, and extrapolates from it). Timothy Comment: What is the conntext for this? are you explaining something to the reader here? 
 
-2. **SignWriting-to-pose conversion**: The written signs are converted into a fluent pose sequence, illustrating how the signs would be physically performed by a signer.
+2. **SignWriting-to-pose conversion**: The written signs are converted into a fluent pose sequence, illustrating how the signs would be physically performed by a signer. Timothy Comment: would this not be more accurate: The Signwriting sequences are converted into fluent pose sequence that illustrates how the sign would be performed by a signer. 
 
 3. **pose-to-video rendering**: This pose sequence is then rendered into a human video.
 
 #### **Data Requirements:**
 
-By combining a relatively small dataset of transcribed single signs (~100k) with a relatively small dataset of segmented continuous signs, and leveraging large video/text sign language datasets, we can automatically transcribe the latter. This process will generate large synthesized datasets for both **text-to-SignWriting** and **SignWriting-to-pose** conversions.
+By combining a relatively small dataset of transcribed single signs (~100k) with a relatively small dataset of segmented continuous signs, and leveraging large video/text sign language datasets, we can automatically transcribe the latter. This process will generate large synthesized datasets for both **text-to-SignWriting** and **SignWriting-to-pose** conversions. Timothy Comment: I dont see how someone not fully emerged in this topic can follow, it took me too much brain power to understand what "the latter" referenced to. ChatGPT suggestion: 
+
+Our approach optimizes data efficiency by combining:
+
+- A relatively small dataset of transcribed single signs (~100k instances).
+- A relatively small dataset of segmented continuous signs.
+
+These smaller datasets are used to enable the automated transcription of large video/text sign language datasets. This process generates extensive synthesized datasets for both text-to-SignWriting and SignWriting-to-pose conversions, significantly enhancing the scalability and accuracy of our models.
 
 #### **Potential Quality**
 
@@ -117,13 +124,13 @@ Here is an example where a minor, inconsequential, and possibly even **wrong** m
 ##### Adaptivity to minor important changes
 
 Here is an example where a minor, important modification to the spoken language (exclamation) yields different, correct translations in SignWriting (reflecting the emotion) but the dictionary yields the same one.
-Changing to question mark, the face correctly become questioning (even though the SignWriting is not perfect).
+Changing to question mark, the face correctly become questioning (even though the SignWriting is not perfect). Timothy Comment: a) can something be minor and important? (small yes, but minor?) Also the sentence is long, complicated and full of difficult vocabulary. Suggestion: Changes in spoken language (e.g., punctuation indicating tone or emotion) yield appropriate translations in SignWriting that reflect context and emotion, while dictionary methods produce static results:
 
 | Text                                                                  | Machine Translation                                                                               | Dictionary Translation                            |
 | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
-| [Hello world.](https://sign.mt/?spl=en&sil=ase&text=Hello%20world.)   | ![SignWriting for "Hello World." in American Sign Language](assets/hello_world/period.png)        | The sign for Hello followed by the sign for World |
-| [Hello world!](https://sign.mt/?spl=en&sil=ase&text=Hello%20world!)   | ![SignWriting for "Hello World!" in American Sign Language](assets/hello_world/exclamation.png)   | The sign for Hello followed by the sign for World |
-| [Hello world?](https://sign.mt/?spl=en&sil=ase&text=Hello%20world%3F) | ![SignWriting for "Hello World?" in American Sign Language](assets/hello_world/question_mark.png) | The sign for Hello followed by the sign for World |
+| [Hello world.](https://sign.mt/?spl=en&sil=ase&text=Hello%20world.)   | ![SignWriting for "Hello World." in American Sign Language](assets/hello_world/period.png)        | The sign for "Hello" followed by the sign for "World" |
+| [Hello world!](https://sign.mt/?spl=en&sil=ase&text=Hello%20world!)   | ![SignWriting for "Hello World!" in American Sign Language](assets/hello_world/exclamation.png)   | The sign for "Hello" followed by the sign for "World" |
+| [Hello world?](https://sign.mt/?spl=en&sil=ase&text=Hello%20world%3F) | ![SignWriting for "Hello World?" in American Sign Language](assets/hello_world/question_mark.png) | The sign for "Hello" followed by the sign for "World" |
 
 ## Signed to Spoken Language Translation
 
