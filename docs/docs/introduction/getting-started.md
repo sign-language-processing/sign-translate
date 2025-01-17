@@ -1,8 +1,9 @@
 # Getting Started
 
-In our documentation, we aim to provide concise and clear information, with a focus on source attribution and accuracy.
-We welcome feedback and contributions to improve the quality and relevance of our content.
+This is the knowhow repository of the AI sign language startup, **sign**. Our mission is to share high-quality knowledge and insights on topics of deafness, market trends, technology, competition, and more.
 
-:::info Quote: Attributed to many people
-If I had more time, I would have written a shorter letter.
-:::
+We strive to provide clear and well-sourced information to ensure transparency and reliability.
+
+We welcome your contributions and feedback to help us maintain quality, relevance, and a deeper understanding of the topics we cover.
+
+
